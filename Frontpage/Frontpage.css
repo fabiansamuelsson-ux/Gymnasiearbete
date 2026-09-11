@@ -1,0 +1,40 @@
+body {
+	background-color: #202020;
+	color: white;
+	font-family: Arial, sans-serif;
+	margin: 0;
+	text-align: center;
+}
+
+header {
+	padding: 50px 20px 30px;
+}
+
+h1 {
+	color: #f5c542;
+}
+
+main {
+	display: flex;
+	gap: 20px;
+	justify-content: center;
+	padding: 20px;
+}
+
+main a {
+	background-color: #f5c542;
+	color: #202020;
+	padding: 15px 25px;
+	text-decoration: none;
+}
+
+main a:hover {
+	background-color: white;
+}
+
+@media (max-width: 600px) {
+	main {
+		align-items: center;
+		flex-direction: column;
+	}
+}
