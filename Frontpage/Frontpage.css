@@ -9,15 +9,14 @@ body {
 header {
 	background: linear-gradient(135deg, #f5c542, #d97706, #9f1239);
 	box-sizing: border-box;
-	min-height: 160px;
-	padding: 30px 20px 30px;
+	padding: 1% 2% 2%;
 	position: relative;
 }
 
 .saldo {
 	position: absolute;
-	right: 24px;
-	top: 18px;
+	right: 2.4%;
+	top: 1.8%;
 	margin: 0;
 	font-weight: bold;
 }
@@ -28,15 +27,15 @@ h1 {
 
 main {
 	display: flex;
-	gap: 20px;
+	gap: 2%;
 	justify-content: center;
-	padding: 20px;
+	padding: 2%;
 }
 
 main a {
 	background-color: #f5c542;
 	color: #202020;
-	padding: 15px 25px;
+	padding: 1.5% 2.5%;
 	text-decoration: none;
 }
 
@@ -44,7 +43,7 @@ main a:hover {
 	background-color: white;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 37.5em) {
 	main {
 		align-items: center;
 		flex-direction: column;
