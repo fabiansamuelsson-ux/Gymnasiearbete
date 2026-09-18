@@ -7,11 +7,23 @@ body {
 }
 
 header {
-	padding: 50px 20px 30px;
+	background: linear-gradient(135deg, #f5c542, #d97706, #9f1239);
+	box-sizing: border-box;
+	min-height: 160px;
+	padding: 30px 20px 30px;
+	position: relative;
+}
+
+.saldo {
+	position: absolute;
+	right: 24px;
+	top: 18px;
+	margin: 0;
+	font-weight: bold;
 }
 
 h1 {
-	color: #f5c542;
+	color: #202020;
 }
 
 main {
