@@ -8,17 +8,17 @@ body {
 
 header {
 	background: linear-gradient(135deg, #f5c542, #d97706, #9f1239);
-	padding: 2% 5%;
+	padding: 1%;
 	position: relative;
 }
 
 .tillbaka {
 	color: #202020;
 	font-weight: bold;
-	left: 5%;
+	left: 1%;
 	position: absolute;
 	text-decoration: none;
-	top: 10%;
+	top: 5%;
 }
 
 .tillbaka:hover {
@@ -28,8 +28,8 @@ header {
 .saldo {
 	font-weight: bold;
 	position: absolute;
-	right: 5%;
-	top: 10%;
+	right: 1%;
+	top: 5%;
 }
 
 h1 {

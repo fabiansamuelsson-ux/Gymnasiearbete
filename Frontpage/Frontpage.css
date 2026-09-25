@@ -9,7 +9,7 @@ body {
 header {
 	background: linear-gradient(135deg, #f5c542, #d97706, #9f1239);
 	box-sizing: border-box;
-	padding: 1% 2% 2%;
+	padding: 1%;
 	position: relative;
 }
 

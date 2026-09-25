@@ -72,7 +72,7 @@ function gissa(riktning) {
 	aktuelltKort = nyttKort;
 	aktuellVinst *= 2;
 	uppdateraVinst();
-	status.textContent = "Rätt! Vill du gissa igen eller ta ut vinsten?";
+	textContent = "Rätt! Vill du gissa igen eller ta ut vinsten?";
 }
 
 function taUtVinst() {

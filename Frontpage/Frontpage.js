@@ -1,8 +1,8 @@
 const sparatSaldo = localStorage.getItem("saldo");
-let saldo = sparatSaldo === null ? 1000 : Number(sparatSaldo);
+let saldo = sparatSaldo === null ? 500 : Number(sparatSaldo);
 
 if (Number.isNaN(saldo)) {
-    saldo = 1000;
+    saldo = 500;
     localStorage.setItem("saldo", saldo);
 }
 
