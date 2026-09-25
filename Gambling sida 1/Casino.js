@@ -1,8 +1,10 @@
 const startkostnad = 20;
 const startvinst = 5;
+const maxVinst = 1000;
 let aktuelltKort = 0;
 let aktuellVinst = 0;
 let spelAktivt = false;
+let antalVinster = 0;
 
 const status = document.getElementById("status");
 const kort = document.getElementById("kort");
@@ -38,17 +40,26 @@ function avslutaSpel(meddelande) {
 
 function spelaVinstljud() {
 	const ljud = new AudioContext();
-	const oscillator = ljud.createOscillator();
-	const volym = ljud.createGain();
+	const grundton = Math.min(520 + antalVinster * 140, 1800);
+	const starttid = ljud.currentTime;
 
-	oscillator.connect(volym);
-	volym.connect(ljud.destination);
-	oscillator.frequency.setValueAtTime(520, ljud.currentTime);
-	oscillator.frequency.linearRampToValueAtTime(780, ljud.currentTime + 0.15);
-	volym.gain.setValueAtTime(0.08, ljud.currentTime);
-	volym.gain.exponentialRampToValueAtTime(0.001, ljud.currentTime + 0.3);
-	oscillator.start();
-	oscillator.stop(ljud.currentTime + 0.3);
+	function spelaTon(frekvens, tid) {
+		const oscillator = ljud.createOscillator();
+		const volym = ljud.createGain();
+
+		oscillator.type = "sine";
+		oscillator.frequency.setValueAtTime(frekvens, tid);
+		volym.gain.setValueAtTime(0.001, tid);
+		volym.gain.exponentialRampToValueAtTime(0.12, tid + 0.01);
+		volym.gain.exponentialRampToValueAtTime(0.001, tid + 0.45);
+		oscillator.connect(volym);
+		volym.connect(ljud.destination);
+		oscillator.start(tid);
+		oscillator.stop(tid + 0.45);
+	}
+
+	spelaTon(grundton, starttid);
+	spelaTon(grundton + 220, starttid + 0.12);
 }
 
 function visaVinstkansla() {
@@ -67,6 +78,7 @@ function startaSpel() {
 	spela(startkostnad);
 	aktuelltKort = slumpaKort();
 	aktuellVinst = startvinst;
+	antalVinster = 0;
 	spelAktivt = true;
 	visaKort(aktuelltKort);
 	uppdateraVinst();
@@ -84,11 +96,13 @@ function gissa(riktning) {
 	}
 
 	const nyttKort = slumpaKort();
-	const vann = riktning === "hogre"
+	const korrektGissning = riktning === "hogre"
 		? nyttKort > aktuelltKort
 		: riktning === "lagre"
 			? nyttKort < aktuelltKort
 			: nyttKort === aktuelltKort;
+	const nästaVinst = aktuellVinst * (riktning === "lika" ? 5 : 2);
+	const vann = korrektGissning && nästaVinst <= maxVinst;
 	visaKort(nyttKort);
 
 	if (!vann) {
@@ -99,7 +113,8 @@ function gissa(riktning) {
 	}
 
 	aktuelltKort = nyttKort;
-	aktuellVinst *= riktning === "lika" ? 5 : 2;
+	aktuellVinst = nästaVinst;
+	antalVinster += 1;
 	uppdateraVinst();
 	status.textContent = "Rätt! Vill du gissa igen eller ta ut vinsten?";
 	visaVinstkansla();
