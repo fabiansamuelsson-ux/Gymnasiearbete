@@ -7,11 +7,27 @@
     <link rel="stylesheet" href="Casino.css"/>
 </head>
 <body>
-    <p>Saldo: <span id="saldo">0 kr</span></p>
+    <header>
+        <a class="tillbaka" href="../Frontpage/Frontpage.html" aria-label="Gå tillbaka till startsidan">&larr; Tillbaka</a>
+        <p class="saldo">Saldo: <span id="saldo">0 kr</span></p>
+        <h1>Högre eller lägre</h1>
+        <p>Gissa om nästa kort blir högre eller lägre.</p>
+    </header>
+
+    <main>
+        <p id="status">Starta spelet för 20 kr.</p>
+        <div class="kort" id="kort">?</div>
+        <p>Aktuell vinst: <strong id="vinst">0 kr</strong></p>
+
+        <div class="knappar">
+            <button id="starta">Starta spel (20 kr)</button>
+            <button id="hogre" disabled>Högre</button>
+            <button id="lagre" disabled>Lägre</button>
+            <button id="taUt" disabled>Ta ut vinst</button>
+        </div>
+    </main>
 
     <script src="../Frontpage/Frontpage.js"></script>
-    <script>
-        visaSaldo();
-    </script>
+    <script src="Casino.js"></script>
 </body>
 </html>

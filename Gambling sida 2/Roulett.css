@@ -1,0 +1,26 @@
+body {
+	background-color: #202020;
+	color: white;
+	font-family: Arial, sans-serif;
+	margin: 0;
+	text-align: center;
+}
+
+header {
+	background: linear-gradient(135deg, #f5c542, #d97706, #9f1239);
+	padding: 2% 5%;
+	position: relative;
+}
+
+.tillbaka {
+	color: #202020;
+	font-weight: bold;
+	left: 5%;
+	position: absolute;
+	text-decoration: none;
+	top: 10%;
+}
+
+.tillbaka:hover {
+	color: white;
+}

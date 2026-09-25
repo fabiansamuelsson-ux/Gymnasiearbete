@@ -1,0 +1,88 @@
+body {
+	background-color: #202020;
+	color: white;
+	font-family: Arial, sans-serif;
+	margin: 0;
+	text-align: center;
+}
+
+header {
+	background: linear-gradient(135deg, #f5c542, #d97706, #9f1239);
+	padding: 2% 5%;
+	position: relative;
+}
+
+.tillbaka {
+	color: #202020;
+	font-weight: bold;
+	left: 5%;
+	position: absolute;
+	text-decoration: none;
+	top: 10%;
+}
+
+.tillbaka:hover {
+	color: white;
+}
+
+.saldo {
+	font-weight: bold;
+	position: absolute;
+	right: 5%;
+	top: 10%;
+}
+
+h1 {
+	color: #202020;
+}
+
+main {
+	margin: 5% auto;
+	max-width: 30rem;
+}
+
+.kort {
+	align-items: center;
+	background-color: white;
+	border-radius: 8px;
+	color: #202020;
+	display: flex;
+	font-size: 5rem;
+	font-weight: bold;
+	height: 8rem;
+	justify-content: center;
+	margin: 2rem auto;
+	width: 6rem;
+}
+
+.knappar {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem;
+	justify-content: center;
+}
+
+button {
+	background-color: #f5c542;
+	border: 0;
+	border-radius: 4px;
+	color: #202020;
+	cursor: pointer;
+	font-size: 1rem;
+	padding: 0.75rem 1rem;
+}
+
+button:hover:not(:disabled) {
+	background-color: white;
+}
+
+button:disabled {
+	cursor: not-allowed;
+	opacity: 0.45;
+}
+
+@media (max-width: 37.5em) {
+	.saldo {
+		position: static;
+	}
+}
