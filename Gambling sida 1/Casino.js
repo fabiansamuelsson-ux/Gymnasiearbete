@@ -8,6 +8,7 @@ let antalVinster = 0;
 
 const status = document.getElementById("status");
 const kort = document.getElementById("kort");
+const kortEtikett = document.getElementById("kortEtikett");
 const vinst = document.getElementById("vinst");
 const starta = document.getElementById("starta");
 const hogre = document.getElementById("hogre");
@@ -22,6 +23,23 @@ function slumpaKort() {
 function visaKort(kortnummer) {
 	const namn = ["", "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
 	kort.textContent = namn[kortnummer];
+	kortEtikett.hidden = kortnummer !== 1;
+}
+
+function slumpaKortSomGorGissningenFel(riktning) {
+	const felaktigaKort = Array.from({ length: 13 }, function (_, index) {
+		return index + 1;
+	}).filter(function (kortnummer) {
+		return riktning === "hogre"
+			? kortnummer < aktuelltKort
+			: kortnummer > aktuelltKort;
+	});
+
+	if (felaktigaKort.length === 0) {
+		return slumpaKort();
+	}
+
+	return felaktigaKort[Math.floor(Math.random() * felaktigaKort.length)];
 }
 
 function uppdateraVinst() {
@@ -95,13 +113,15 @@ function gissa(riktning) {
 		return;
 	}
 
-	const nyttKort = slumpaKort();
+	const nästaVinst = aktuellVinst * (riktning === "lika" ? 5 : 2);
+	const nyttKort = nästaVinst > maxVinst && riktning !== "lika"
+		? slumpaKortSomGorGissningenFel(riktning)
+		: slumpaKort();
 	const korrektGissning = riktning === "hogre"
 		? nyttKort > aktuelltKort
 		: riktning === "lagre"
 			? nyttKort < aktuelltKort
 			: nyttKort === aktuelltKort;
-	const nästaVinst = aktuellVinst * (riktning === "lika" ? 5 : 2);
 	const vann = korrektGissning && nästaVinst <= maxVinst;
 	visaKort(nyttKort);
 

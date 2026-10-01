@@ -41,6 +41,12 @@ main {
 	max-width: 30rem;
 }
 
+.kort-behallare {
+	margin: 2rem auto;
+	position: relative;
+	width: 6rem;
+}
+
 .kort {
 	align-items: center;
 	background-color: white;
@@ -51,8 +57,20 @@ main {
 	font-weight: bold;
 	height: 8rem;
 	justify-content: center;
-	margin: 2rem auto;
 	width: 6rem;
+}
+
+.kort-etikett {
+	background-color: #9f1239;
+	border-radius: 3px;
+	color: white;
+	font-size: 0.75rem;
+	font-weight: bold;
+	left: 50%;
+	padding: 0.2rem 0.45rem;
+	position: absolute;
+	top: -0.65rem;
+	transform: translateX(-50%);
 }
 
 .vinst-animering {
