@@ -9,12 +9,48 @@
 <body>
     <header>
         <a class="tillbaka" href="../Frontpage/Frontpage.html" aria-label="Gå tillbaka till startsidan">&larr; Tillbaka</a>
-        <p>Saldo: <span id="saldo">0 kr</span></p>
+        <p class="saldo">Saldo: <span id="saldo">0 kr</span></p>
+        <h1>Lådöppning</h1>
+        <p>Öppna en låda och vinn ett CS2-skin. Utbetalningen beror på skinets färg.</p>
     </header>
 
+    <main>
+        <section class="spelpanel" aria-labelledby="valj-lada">
+            <h2 id="valj-lada">Välj en låda</h2>
+            <label for="ladaPris">Lådpris</label>
+            <select id="ladaPris">
+                <option value="20">Liten låda – 20 kr</option>
+                <option value="50">Mellanlåda – 50 kr</option>
+                <option value="100">Stor låda – 100 kr</option>
+            </select>
+            <button id="oppnaLada">Öppna låda</button>
+            <p id="status" role="status" aria-live="polite">Välj en låda och öppna den för att spela.</p>
+        </section>
+
+        <section class="odds" aria-labelledby="odds-rubrik">
+            <h2 id="odds-rubrik">Färger, chans och utbetalning</h2>
+            <ul>
+                <li class="raritet-blatt"><span>Blå · 80 %</span><strong>0,2–0,6×</strong></li>
+                <li class="raritet-lila"><span>Lila · 16 %</span><strong>0,7–2,4×</strong></li>
+                <li class="raritet-rosa"><span>Rosa · 3.2 %</span><strong>1,9–12,8×</strong></li>
+                <li class="raritet-rod"><span>Röd ·  0.64%</span><strong>9,7–23,4×</strong></li>
+                <li class="raritet-guld"><span>Guld · 0.16 %</span><strong>34,7–167,7×</strong></li>
+            </ul>
+            <p>Utbetalningen är lådpriset gånger multipeln. Skinens marknadspris hämtas separat från OpenSkin och visas i USD.</p>
+        </section>
+
+        <section id="resultat" class="resultat" aria-live="polite" hidden>
+            <img id="skinBild" alt="" />
+            <div>
+                <p id="skinRaritet" class="raritet-etikett"></p>
+                <h2 id="skinNamn"></h2>
+                <p id="skinPris"></p>
+                <p id="utbetalning"></p>
+            </div>
+        </section>
+    </main>
+
     <script src="../Frontpage/Frontpage.js"></script>
-    <script>
-        visaSaldo();
-    </script>
+    <script src="Cs.js"></script>
 </body>
 </html>

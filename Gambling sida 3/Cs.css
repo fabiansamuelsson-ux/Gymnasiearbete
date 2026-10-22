@@ -6,21 +6,223 @@ body {
 	text-align: center;
 }
 
+body.vinst-effekt::after,
+body.forlust-effekt::after {
+	content: "";
+	inset: 0;
+	pointer-events: none;
+	position: fixed;
+	z-index: 10;
+}
+
+body.vinst-effekt::after {
+	animation: gron-vinst 0.9s ease-out;
+	background-color: rgba(35, 220, 105, 0.28);
+}
+
+body.forlust-effekt::after {
+	animation: rod-forlust 0.9s ease-out;
+	background-color: rgba(239, 68, 68, 0.3);
+}
+
+@keyframes gron-vinst {
+	0%, 100% {
+		opacity: 0;
+	}
+	25% {
+		opacity: 1;
+	}
+}
+
+@keyframes rod-forlust {
+	0% {
+		opacity: 0;
+	}
+	25% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	body.vinst-effekt::after,
+	body.forlust-effekt::after {
+		animation-duration: 0.01ms;
+	}
+}
+
 header {
 	background: linear-gradient(135deg, #f5c542, #d97706, #9f1239);
-	padding: 2% 5%;
+	padding: 1% 5%;
 	position: relative;
 }
 
 .tillbaka {
 	color: #202020;
 	font-weight: bold;
-	left: 5%;
+	left: 1%;
 	position: absolute;
 	text-decoration: none;
-	top: 10%;
+	top: 5%;
 }
 
 .tillbaka:hover {
 	color: white;
+}
+
+.saldo {
+	font-weight: bold;
+	position: absolute;
+	right: 1%;
+	top: 5%;
+}
+
+h1 {
+	color: #202020;
+}
+
+main {
+	display: grid;
+	gap: 1.5rem;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
+	margin: 3rem auto;
+	max-width: 54rem;
+	padding: 0 1rem;
+}
+
+.spelpanel,
+.odds,
+.resultat {
+	background-color: #2c2c2c;
+	border: 1px solid #555;
+	border-radius: 8px;
+	padding: 1.5rem;
+}
+
+.spelpanel {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+}
+
+.spelpanel h2,
+.odds h2 {
+	margin-top: 0;
+}
+
+select {
+	background-color: #202020;
+	border: 1px solid #777;
+	border-radius: 4px;
+	color: white;
+	font-size: 1rem;
+	padding: 0.75rem;
+}
+
+button {
+	background-color: #f5c542;
+	border: 0;
+	border-radius: 4px;
+	color: #202020;
+	cursor: pointer;
+	font-size: 1rem;
+	font-weight: bold;
+	padding: 0.75rem 1rem;
+}
+
+button:hover:not(:disabled) {
+	background-color: white;
+}
+
+button:disabled {
+	cursor: wait;
+	opacity: 0.6;
+}
+
+#status {
+	min-height: 1.5em;
+}
+
+.odds ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.odds li {
+	align-items: center;
+	border-left: 0.35rem solid;
+	display: flex;
+	justify-content: space-between;
+	margin: 0.6rem 0;
+	padding: 0.4rem 0.75rem;
+}
+
+.raritet-blatt {
+	border-color: #5b9bd5;
+}
+
+.raritet-lila {
+	border-color: #a970ff;
+}
+
+.raritet-rosa {
+	border-color: #ed70cf;
+}
+
+.raritet-rod {
+	border-color: #ef5350;
+}
+
+.raritet-guld {
+	border-color: #f5c542;
+}
+
+.resultat {
+	align-items: center;
+	display: flex;
+	gap: 1.5rem;
+	grid-column: 1 / -1;
+	text-align: left;
+}
+
+.resultat[hidden] {
+	display: none;
+}
+
+.resultat img {
+	max-height: 10rem;
+	max-width: 40%;
+	object-fit: contain;
+}
+
+.resultat h2,
+.resultat p {
+	margin: 0.5rem 0;
+}
+
+.raritet-etikett {
+	font-weight: bold;
+}
+
+@media (max-width: 37.5em) {
+	header {
+		padding: 1rem;
+	}
+
+	.tillbaka,
+	.saldo {
+		position: static;
+	}
+
+	.resultat {
+		align-items: flex-start;
+		flex-direction: column;
+	}
+
+	.resultat img {
+		max-width: 100%;
+	}
 }

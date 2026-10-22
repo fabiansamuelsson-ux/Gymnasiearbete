@@ -1,6 +1,6 @@
-const startkostnad = 20;
+const startkostnad = 10;
 const startvinst = 5;
-const maxVinst = 1000;
+const maxVinst = 250;
 let aktuelltKort = 0;
 let aktuellVinst = 0;
 let spelAktivt = false;
@@ -113,7 +113,7 @@ function gissa(riktning) {
 		return;
 	}
 
-	const nästaVinst = aktuellVinst * (riktning === "lika" ? 5 : 2);
+	const nästaVinst = Math.ceil(aktuellVinst * (riktning === "lika" ? 5 : 1.4));
 	const nyttKort = nästaVinst > maxVinst && riktning !== "lika"
 		? slumpaKortSomGorGissningenFel(riktning)
 		: slumpaKort();
