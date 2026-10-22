@@ -41,6 +41,52 @@ main {
 	max-width: 30rem;
 }
 
+.vinst-info {
+	background: linear-gradient(135deg, #f5c542, #d97706);
+	border: 1px solid #d97706;
+	border-radius: 8px;
+	box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.3);
+	color: #202020;
+	left: 2rem;
+	padding: 1.25rem;
+	position: absolute;
+	text-align: left;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 12rem;
+}
+
+.vinst-info strong {
+	color: #202020;
+	display: block;
+	font-size: 0.9rem;
+	letter-spacing: 0.04em;
+	margin-bottom: 0.75rem;
+	text-transform: uppercase;
+}
+
+.vinst-info::after {
+	border-bottom: 0.75rem solid transparent;
+	border-left: 0.75rem solid #d97706;
+	border-top: 0.75rem solid transparent;
+	content: "";
+	left: 100%;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.vinst-info p {
+	border-top: 1px solid rgba(32, 32, 32, 0.25);
+	font-size: 0.9rem;
+	margin: 0;
+	padding: 0.65rem 0 0;
+}
+
+.vinst-info p + p {
+	margin-top: 0.65rem;
+}
+
 .kort-behallare {
 	margin: 2rem auto;
 	position: relative;
@@ -120,5 +166,23 @@ button:disabled {
 @media (max-width: 37.5em) {
 	.saldo {
 		position: static;
+	}
+
+	.vinst-info {
+		margin: 1.5rem auto;
+		position: relative;
+		top: auto;
+		transform: none;
+		width: min(80%, 18rem);
+	}
+
+	.vinst-info::after {
+		border-left: 0.75rem solid transparent;
+		border-right: 0.75rem solid transparent;
+		border-top: 0.75rem solid #d97706;
+		border-bottom: 0;
+		left: 50%;
+		top: 100%;
+		transform: translateX(-50%);
 	}
 }

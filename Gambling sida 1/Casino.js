@@ -113,7 +113,7 @@ function gissa(riktning) {
 		return;
 	}
 
-	const nästaVinst = Math.ceil(aktuellVinst * (riktning === "lika" ? 5 : 1.4));
+	const nästaVinst = Math.ceil(aktuellVinst * (riktning === "lika" ? 15 : 1.4));
 	const nyttKort = nästaVinst > maxVinst && riktning !== "lika"
 		? slumpaKortSomGorGissningenFel(riktning)
 		: slumpaKort();
